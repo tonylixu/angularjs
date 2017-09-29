@@ -40,17 +40,24 @@ angularApp.service('nameService', function() {
 // Aff angularjs services start with $
 // $scope become the middle piece of view and controller
 angularApp.controller('mainController', ['$scope', '$log', '$routeParams', 'nameService', function($scope, $log, $routeParams, nameService) {
-    $scope.name = 'Main';
+    $scope.name = nameService.name;
+    
+    $scope.$watch('name', function() {
+        nameService.name = $scope.name;
+    });
 
-    $log.main = 'Property from main';
     $log.log(nameService.name);
     $log.log(nameService.namelength());
 
 }]);
 
-angularApp.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
+angularApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameService', function($scope, $log, $routeParams, nameService) {
     $scope.name = 'Second';
-    $scope.num = $routeParams.num || 1;
-    $log.second = 'Property from second';
+    
+    $scope.$watch('name', function() {
+        nameService.name = $scope.name;
+    });
+
     $log.log($log);
+    $scope.name = nameService.name;
 }]);
