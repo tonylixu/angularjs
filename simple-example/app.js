@@ -15,7 +15,7 @@ angularApp.config(function ($routeProvider) {
         controller: 'secondController'
     })
     
-    .when('/second/:num', {
+    .when('/second/:num', { 
         templateUrl: 'pages/second.html',
         controller: 'secondController'
     })
@@ -48,6 +48,7 @@ angularApp.controller('mainController', ['$scope', '$log', '$routeParams', 'name
 
     $log.log(nameService.name);
     $log.log(nameService.namelength());
+    
 
 }]);
 
@@ -58,6 +59,16 @@ angularApp.controller('secondController', ['$scope', '$log', '$routeParams', 'na
         nameService.name = $scope.name;
     });
 
-    $log.log($log);
-    $scope.name = nameService.name;
+    $log.log(nameService.name);
+    $log.log(nameService.namelength());
 }]);
+
+// Create a new directive
+angularApp.directive("searchResult", function() {
+
+    return {
+        restrict: 'AEC',
+        template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Xu, Tony</h4><p class="list-group-item-text">555 Main st., New York, NY 11111</p></a>',
+        replace: true
+    }
+});
