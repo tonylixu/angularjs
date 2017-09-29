@@ -68,7 +68,7 @@ angularApp.directive("searchResult", function() {
 
     return {
         restrict: 'AEC',
-        template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Xu, Tony</h4><p class="list-group-item-text">555 Main st., New York, NY 11111</p></a>',
+        templateUrl: 'directives/searchresults.html',
         replace: true
     }
 });
